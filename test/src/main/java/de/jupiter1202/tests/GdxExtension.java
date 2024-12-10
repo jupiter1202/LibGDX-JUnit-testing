@@ -1,4 +1,4 @@
-package de.unimon.tests;
+package de.jupiter1202.tests;
 
 import static org.mockito.Mockito.mock;
 
