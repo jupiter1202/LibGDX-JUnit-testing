@@ -13,13 +13,14 @@ import org.junit.jupiter.api.extension.Extension;
  * This class is a JUnit extension to start a headless application so that unit tests can access
  * LibGdx functions. To do this, the annotation @ExtendWith(GdxExtension.class) must be placed
  * before the class declaration in each test class.
- *
- * @author Florian Möschler
  */
 public class GdxExtension extends ApplicationAdapter implements Extension {
 
   /**
-   * Creates a new Headless application.
+   * Constructs a new instance of GdxExtension. This initializes the LibGDX headless backend,
+   * allowing LibGDX functionality to be utilized during unit tests. A mocked GL20 object is
+   * assigned to Gdx.gl, enabling rendering-related operations without requiring a display
+   * environment.
    */
   public GdxExtension() {
     HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
