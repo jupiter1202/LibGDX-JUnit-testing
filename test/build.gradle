@@ -32,13 +32,13 @@ project(":test") {
     /*
     * The following dependencies are not mandatory,
     * but may be necessary depending on the project configuration and test cases.
-    * If you do not need the dependencies, you can comment them out or delete them.
+    * If you need the dependencies, you can insert them by commenting them in.
     */
-    testImplementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-    testImplementation "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
-    testImplementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-    testImplementation "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:$dialogsVersion"
-    testImplementation "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
+    //testImplementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+    //testImplementation "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
+    //testImplementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+    //testImplementation "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:$dialogsVersion"
+    //testImplementation "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
   }
   test {
     useJUnitPlatform()
