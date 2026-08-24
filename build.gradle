@@ -81,6 +81,10 @@ configure(subprojects) {
     jvmArgumentProviders.add({
       ["-javaagent:${mockitoAgentClasspath.singleFile.absolutePath}"]
     } as org.gradle.process.CommandLineArgumentProvider)
+    testLogging {
+      events 'passed', 'skipped', 'failed'
+      exceptionFormat = 'full'
+    }
   }
 }
 
