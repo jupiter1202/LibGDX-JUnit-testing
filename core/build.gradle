@@ -9,6 +9,12 @@ dependencies {
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
   api "org.apache.groovy:groovy-all:$groovyVersion"
 
+  // Core tests that touch Gdx.* run against the display-free backend.
+  testImplementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+  testRuntimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+  testRuntimeOnly "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+  testRuntimeOnly "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }

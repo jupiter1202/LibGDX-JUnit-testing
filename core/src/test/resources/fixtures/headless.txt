@@ -1,0 +1,1 @@
+available through Gdx.files.classpath during headless tests

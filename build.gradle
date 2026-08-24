@@ -31,6 +31,25 @@ configure(subprojects) {
   java.sourceCompatibility = 25
   java.targetCompatibility = 25
 
+  configurations {
+    mockitoAgent {
+      canBeConsumed = false
+      canBeResolved = true
+    }
+  }
+
+  dependencies {
+    testImplementation platform("org.junit:junit-bom:$junitVersion")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+    mockitoAgent("org.mockito:mockito-core:$mockitoVersion") {
+      transitive = false
+    }
+  }
+
   // From https://lyze.dev/2021/04/29/libGDX-Internal-Assets-List/
   // The article can be helpful when using assets.txt in your project.
   tasks.register('generateAssetList') {
@@ -53,6 +72,15 @@ configure(subprojects) {
 
   compileJava {
     options.incremental = true
+  }
+
+  def mockitoAgentClasspath = configurations.mockitoAgent
+  tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
+    jvmArgumentProviders.add({
+      ["-javaagent:${mockitoAgentClasspath.singleFile.absolutePath}"]
+    } as org.gradle.process.CommandLineArgumentProvider)
   }
 }
 
